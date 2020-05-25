@@ -1,8 +1,8 @@
-# jetson-nvidia-nano
+# jetson-nvidia-nano (r32.4.2)
 Prepare Jetson novidia nono for ROS , Temsorflow OpenCV and Open AI
 
 cd ~/jetson-nvidia-nano
-<h1>Setup</h1>
+# Setup
 1. Install more swap file for jetson nvidia nan
 <div class="highlight highlight-source-shell"><pre>
 chmod +x swap-ins.sh
