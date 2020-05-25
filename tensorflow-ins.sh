@@ -29,6 +29,9 @@ pip3 install --user --extra-index-url https://developer.download.nvidia.com/comp
 pip3 install --user keras
 pip3 install --user jupyter
 pip3 install --user pillow
+pip3 install --user scipy
+pip3 install --user scikit-learn
+#pip3 install --user opencv-python
 
 sudo apt-get install -y libfreetype6-dev pkg-config
 pip3 install --user matplotlib
