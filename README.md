@@ -5,7 +5,7 @@ cd ~/jetson-nvidia-nano
 <h1>
 Setup
  </h1>
-1. Install more swap file for jetson vidia nano<br>
+1. Install more swap file for jetson nvidia nano<br>
   chmod +x swap-ins.sh<br>
   ./swap-ins.sh<br>
 <br>
