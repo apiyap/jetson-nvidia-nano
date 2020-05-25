@@ -1,3 +1,4 @@
+#!/bin/bash
 #change the mode to MAX-N, issue
 sudo nvpmodel -m 0
 
