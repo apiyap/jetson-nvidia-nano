@@ -14,7 +14,10 @@ chmod +x swap-ins.sh
 chmod +x ros-melodic-ins.sh
 ./ros-melodic-ins.sh
 </pre></div>
-3. Install tensorflow 
+3. Install OpenCV3
+https://github.com/apiyap/buildOpenCV3
+
+4. Install tensorflow 
 <div class="highlight highlight-source-shell"><pre>
 chmod +x tensorflow-ins.sh
 ./chmod +x 
