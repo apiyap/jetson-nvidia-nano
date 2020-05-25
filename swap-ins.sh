@@ -29,5 +29,5 @@ SWAPLOCATION=$SWAPDIRECTORY"/swapfile"
 echo $SWAPLOCATION
 sudo sh -c 'echo "'$SWAPLOCATION' swap swap defaults 0 0" >> /etc/fstab'
 echo "Swap file has been created"
-echo "Reboot to make sure changes are in effect"
+echo "Please reboot to make sure changes are in effect"
 
