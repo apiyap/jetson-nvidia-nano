@@ -1,5 +1,5 @@
 # jetson-nvidia-nano (r32.4.2)
-Prepare Jetson novidia nono for ROS , Temsorflow OpenCV and Open AI
+Prepare Jetson novidia nono for ROS , Tensorflow OpenCV and Open AI
 
 cd ~/jetson-nvidia-nano
 # Setup
