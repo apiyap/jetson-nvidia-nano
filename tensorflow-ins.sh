@@ -31,7 +31,7 @@ pip3 install --user jupyter
 pip3 install --user pillow
 pip3 install --user scipy
 pip3 install --user scikit-learn
-#pip3 install --user opencv-python
+pip3 install --user sklearn
 
 sudo apt-get install -y libfreetype6-dev pkg-config
 pip3 install --user matplotlib
