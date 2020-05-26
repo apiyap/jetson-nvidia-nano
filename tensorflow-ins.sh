@@ -21,7 +21,7 @@ sudo python get-pip.py
 rm get-pip.py
 
 echo "Install tensorflow"
-TF_VERSION=2.1.0  #2.1.0 , 1.15.2
+TF_VERSION=1.15.2  #2.1.0 , 1.15.2
 NV_VERSION=20.04  
 pip3 install -U pip setuptools --user
 pip3 install --user numpy
