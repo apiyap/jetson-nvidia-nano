@@ -27,4 +27,7 @@ chmod +x tensorflow-ins.sh
 Installing Node,js using the Node Version Manager (NVM)
 <pre>
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+nvm ls-remote #list version
+nvm install v8.17.0
+
 </pre>
