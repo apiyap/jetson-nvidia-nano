@@ -31,3 +31,6 @@ nvm ls-remote #list version
 nvm install v8.17.0
 
 </pre>
+# Install gzWeb
+ Official instructions can be found [here](http://gazebosim.org/tutorials?tut=gzweb_install&cat=gzweb)
+ 
