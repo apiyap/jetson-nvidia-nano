@@ -35,7 +35,7 @@ pip3 install --user sklearn
 
 sudo apt-get install -y libfreetype6-dev pkg-config
 pip3 install --user matplotlib
-pip3 install --user gym
+pip3 install --user gym==0.10.9
 
 echo "Check python"
 python3 -c 'import numpy; print(numpy.__version__)'
