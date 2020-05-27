@@ -23,3 +23,8 @@ chmod +x tensorflow-ins.sh
 ./chmod +x 
 </pre></div>
   
+# Note
+Installing Node,js using the Node Version Manager (NVM)
+<pre>
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+</pre>
