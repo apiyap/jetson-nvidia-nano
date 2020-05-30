@@ -46,18 +46,18 @@ sudo python3 get-pip.py
 rm get-pip.py
 sudo pip install virtualenv virtualenvwrapper
 echo '# virtualenv and virtualenvwrapper' >> ~/.bashrc
-echo 'export WORKON_HOME=$HOME/.virtualenvs' >> ~/.bashrc
+echo 'export WORKON_HOME=/home/$USER/.virtualenvs' >> ~/.bashrc
 echo 'export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3' >> ~/.bashrc
 echo 'source /usr/local/bin/virtualenvwrapper.sh' >> ~/.bashrc
-source ~/.bashrc
-echo -e "${BIPur}Create your ‘py3cv4’ virtual environment${RESET}"
-mkvirtualenv py3cv4 -p python3
-workon py3cv4
-deactivate
+
 echo -e "${BIPur}Install the Protobuf Compiler${RESET}"
 wget https://raw.githubusercontent.com/jkjung-avt/jetson_nano/master/install_protobuf-3.6.1.sh
 sudo chmod +x install_protobuf-3.6.1.sh
 ./install_protobuf-3.6.1.sh
+
+source ~/.bashrc
+echo -e "${BIPur}Create your ‘py3cv4’ virtual environment${RESET}"
+mkvirtualenv py3cv4 -p python3
 
 workon py3cv4 # if you aren't inside the environment
 cd ~
@@ -66,12 +66,5 @@ cd python
 python setup.py install --cpp_implementation
 
 deactivate
-
-
-
-
-
-
-
 
 
