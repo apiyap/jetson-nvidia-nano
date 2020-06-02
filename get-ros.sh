@@ -9,7 +9,7 @@ then
       exit 1 
 }
 else
-      echo "Get Package \$ROS_PKG"
+      echo "Get Package $ROS_PKG"
 fi
 
 rosinstall_generator $ROS_PKG --rosdistro $ROS_DISTRO --deps --tar > $ROS_DISTRO-$ROS_PKG.rosinstall
