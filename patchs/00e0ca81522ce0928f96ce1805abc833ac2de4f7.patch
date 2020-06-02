@@ -1,0 +1,23 @@
+From 00e0ca81522ce0928f96ce1805abc833ac2de4f7 Mon Sep 17 00:00:00 2001
+From: Hans Gaiser <h.gaiser@fizyr.com>
+Date: Mon, 17 Dec 2018 12:44:19 +0100
+Subject: [PATCH] Check for opencv3 or opencv4.
+
+---
+ cv_bridge/CMakeLists.txt | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/cv_bridge/CMakeLists.txt b/cv_bridge/CMakeLists.txt
+index 997bef3e..048fc86c 100644
+--- a/cv_bridge/CMakeLists.txt
++++ b/cv_bridge/CMakeLists.txt
+@@ -13,7 +13,8 @@ if(NOT ANDROID)
+ else()
+ find_package(Boost REQUIRED)
+ endif()
+-find_package(OpenCV 3 REQUIRED
++
++find_package(OpenCV REQUIRED
+   COMPONENTS
+     opencv_core
+     opencv_imgproc
