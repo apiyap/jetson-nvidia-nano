@@ -1,0 +1,72 @@
+diff -ruN ros_org_ws/src/image_transport_plugins/compressed_depth_image_transport/src/codec.cpp ros_catkin_ws/src/image_transport_plugins/compressed_depth_image_transport/src/codec.cpp
+--- ros_org_ws/src/image_transport_plugins/compressed_depth_image_transport/src/codec.cpp	2018-05-10 20:55:27.000000000 +0700
++++ ros_catkin_ws/src/image_transport_plugins/compressed_depth_image_transport/src/codec.cpp	2020-06-03 13:13:52.016431103 +0700
+@@ -39,15 +39,16 @@
+ 
+ #include <opencv2/highgui/highgui.hpp>
+ 
++
+ #include "cv_bridge/cv_bridge.h"
+ #include "compressed_depth_image_transport/codec.h"
+ #include "compressed_depth_image_transport/compression_common.h"
+ #include "ros/ros.h"
+ 
+ // If OpenCV3
+-#ifndef CV_VERSION_EPOCH
++//#ifndef CV_VERSION_EPOCH
+ #include <opencv2/imgcodecs.hpp>
+-#endif
++//#endif
+ 
+ namespace enc = sensor_msgs::image_encodings;
+ using namespace cv;
+@@ -135,7 +136,11 @@
+       // Decode raw image
+       try
+       {
++        #if CV_MAJOR_VERSION > 3
++        cv_ptr->image = cv::imdecode(imageData, IMREAD_UNCHANGED);
++        #else
+         cv_ptr->image = cv::imdecode(imageData, CV_LOAD_IMAGE_UNCHANGED);
++        #endif
+       }
+       catch (cv::Exception& e)
+       {
+diff -ruN ros_org_ws/src/image_transport_plugins/compressed_image_transport/src/compressed_publisher.cpp ros_catkin_ws/src/image_transport_plugins/compressed_image_transport/src/compressed_publisher.cpp
+--- ros_org_ws/src/image_transport_plugins/compressed_image_transport/src/compressed_publisher.cpp	2018-05-10 20:55:24.000000000 +0700
++++ ros_catkin_ws/src/image_transport_plugins/compressed_image_transport/src/compressed_publisher.cpp	2020-06-03 13:12:05.998294589 +0700
+@@ -37,7 +37,9 @@
+ #include <sensor_msgs/image_encodings.h>
+ #include <opencv2/highgui/highgui.hpp>
+ #include <boost/make_shared.hpp>
+-
++#if CV_MAJOR_VERSION > 3
++#include <opencv2/imgcodecs.hpp>
++#endif
+ #include "compressed_image_transport/compression_common.h"
+ 
+ #include <vector>
+@@ -97,7 +99,11 @@
+     // JPEG Compression
+     case JPEG:
+     {
++      #if CV_MAJOR_VERSION > 3
++      params[0] = IMWRITE_JPEG_QUALITY;
++      #else
+       params[0] = CV_IMWRITE_JPEG_QUALITY;
++      #endif
+       params[1] = config_.jpeg_quality;
+ 
+       // Update ros message format header
+@@ -154,7 +160,11 @@
+       // PNG Compression
+     case PNG:
+     {
++      #if CV_MAJOR_VERSION > 3
++      params[0] = IMWRITE_PNG_COMPRESSION;
++      #else
+       params[0] = CV_IMWRITE_PNG_COMPRESSION;
++      #endif
+       params[1] = config_.png_level;
+ 
+       // Update ros message format header
