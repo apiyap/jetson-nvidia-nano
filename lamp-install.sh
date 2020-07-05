@@ -7,7 +7,7 @@ sudo ufw app list
 sudo ufw app info "Apache Full"
 
 sudo apt-get install -y mysql-server
-sudo apt-get install -y php libapache2-mod-php php-mysql 
+sudo apt-get install -y php libapache2-mod-php php-mysql php-mbstring php-intl
 
 echo "Add index.php in dir.conf"
 sudo nano /etc/apache2/mods-enabled/dir.conf
@@ -16,6 +16,8 @@ sudo systemctl restart apache2
 sudo apt-get install php-cli
 
 sudo apt-get install -y phpmyadmin 
+
+
 
 sudo service apache2 restart 
 sudo mysql
