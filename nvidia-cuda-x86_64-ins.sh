@@ -15,6 +15,9 @@ echo "export PATH=/usr/local/cuda-11.0/bin\${PATH:+:\${PATH}}" >> ~/.bashrc
 #export LD_LIBRARY_PATH=/usr/local/cuda-11.0/lib${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 #64 bit
 echo "export LD_LIBRARY_PATH=/usr/local/cuda-11.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}" >> ~/.bashrc
-
 nvidia-smi
 nvcc -V
+cuda-install-samples-11.0.sh ~
+cd ~/NVIDIA_CUDA-11.0_Samples/5_Simulations/nbody
+make
+./nbody
