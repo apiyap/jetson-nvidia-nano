@@ -17,7 +17,10 @@ sudo apt-get install php-cli
 
 sudo apt-get install -y phpmyadmin 
 
-
+sudo a2enmod proxy
+sudo a2enmod proxy_http
+sudo a2enmod proxy_balancer
+sudo a2enmod lbmethod_byrequests
 
 sudo service apache2 restart 
 sudo mysql
