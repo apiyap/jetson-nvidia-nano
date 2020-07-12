@@ -23,6 +23,7 @@ echo -e "${BIYel}Install bshaffer/oauth2-server-php to ${PROJECT_NAME}${RESET}"
 composer require bshaffer/oauth2-server-php "^1.10"
 echo -e "${BIYel}Install AdminLTE to ${PROJECT_NAME}${RESET}"
 composer require "almasaeed2010/adminlte=~3.0"
+
 composer update
 cp env .env
 #Modify .env file
