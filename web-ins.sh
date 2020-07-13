@@ -12,6 +12,11 @@ BIWhi='\e[1;97m';
 export PROJECT_ROOT=$HOME/public_web/web004
 export PROJECT_NAME=dev01
 sudo apt install composer
+sudo apt install php-intl
+sudo phpenmod mbstring
+sudo phpenmod intl
+sudo service apache2 restart
+
 cd ${PROJECT_ROOT}
 echo -e "${BIRed}Create Codeigniter 4 project in directory ${PROJECT_NAME}${RESET}"
 composer create-project codeigniter4/appstarter ${PROJECT_NAME}
