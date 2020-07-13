@@ -11,6 +11,7 @@ BICya='\e[1;96m';
 BIWhi='\e[1;97m';
 export PROJECT_ROOT=$HOME/public_web/web004
 export PROJECT_NAME=dev01
+sudo apt install composer
 cd ${PROJECT_ROOT}
 echo -e "${BIRed}Create Codeigniter 4 project in directory ${PROJECT_NAME}${RESET}"
 composer create-project codeigniter4/appstarter ${PROJECT_NAME}
