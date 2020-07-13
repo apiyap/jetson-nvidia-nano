@@ -32,6 +32,7 @@ sudo ln -s $HOME/public_web/web003/html/ web003.com
 sudo ln -s $HOME/public_web/web004/html/ web004.com
 
 sudo chmod -R 755 /var/www
+sudo chown -R www-data /var/www
 
 sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/web000.com.conf
 sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/web001.com.conf
