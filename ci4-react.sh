@@ -114,18 +114,22 @@ function App() {
 
 export default App;
 " | tee  App.js
-echo "import React, { Component } from 'react';
+echo "import React from 'react';
 import ReactDOM from 'react-dom';
-export default class Root extends Component {
-  render() {
-    return (
-      <h1>Hello World from React</h1>
-    )
-  }
-}
-let container = document.getElementById('app');
-let component = <Root />;
-ReactDOM.render(component, container);
+import './index.css';
+import App from './App';
+
+
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: https://bit.ly/CRA-PWA
+
 " | tee  index.js
 
 echo "body {
@@ -143,13 +147,24 @@ code {
 }
 " | tee index.css
 
+echo "<!DOCTYPE html>
+<html>
+  <head>
+    <title>Webpack + React Setup</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>" | tee index.html
 
 cd $INSTALL_PRJ_DIR/$PRJ_NAME
 
 echo -e "${IGre}Install webpack to ${PRJ_NAME}${RESET}"
 
-npm install path @babel/core @babel/preset-react react babel-loader react-dom --save
-npm install webpack webpack-cli --global
+npm install --save path @babel/core @babel/preset-react react babel-loader react-dom 
+#npm install --save-dev --global   webpack  webpack-cli  
+npm install --save-dev webpack webpack-cli html-webpack-plugin webpack-dev-server webpack-dev-middleware
+npm i webpack -g; npm link webpack --save-dev
 
 #npm install -D babel-loader @babel/core @babel/cli @babel/preset-env @babel/preset-react babel-plugin-react-transform  babel-plugin-lodash  webpack webpack-cli  --save-dev
 
@@ -157,8 +172,7 @@ npm install webpack webpack-cli --global
 #ERROR <React.StrictMode>
 
 
-
-#npm install css-loader style-loader sass-loader node-sass file-loader  html-webpack-plugin react-hot-loader clean-webpack-plugin webpack-dev-server --save
+npm install --save-dev  css-loader style-loader sass-loader node-sass file-loader  react-hot-loader clean-webpack-plugin html-webpack-plugin  webpack-dev-server 
 
 
 
@@ -167,7 +181,7 @@ echo -e "${IGre}create webpack configure to ${PRJ_NAME}${RESET}"
 echo "
 var path = require('path');
 //const webpack = require('webpack');
-//const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 //const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
@@ -195,20 +209,45 @@ module.exports = {
           //{ loader: 'sass-loader' },
           //{ loader: 'file-loader' },
          ]
-        }
+        },
+        {
+          test: /\.css$/,
+          exclude: /(node_modules)/,
+          use: [
+            { loader: 'style-loader' },
+            { loader: 'css-loader' },
+          ],
+        },
+        {
+          test: /\.scss$/,
+          exclude: /(node_modules)/,
+          use: [
+            { loader: 'style-loader' },
+            { loader: 'css-loader' },
+            { loader: 'sass-loader' },
+          ],
+        },
+        {
+          test: /\.png$/,
+          exclude: /(node_modules)/,
+          use: [
+            { loader: 'file-loader' },
+          ],
+        },
     ]
   },
  plugins: [
     //new CleanWebpackPlugin(),
     //new webpack.HotModuleReplacementPlugin(),
-    //new HtmlWebpackPlugin({
-    //  template: 'src/index.html',
-    //}),
+    new HtmlWebpackPlugin({
+      template: './react-app/src/index.html',
+    }),
   ],
   devServer: {
     hot: true,
   },
 }
+
 " | tee webpack.config.js
 
 echo -e "${IGre}Create react components directory to ${PRJ_NAME}${RESET}"
