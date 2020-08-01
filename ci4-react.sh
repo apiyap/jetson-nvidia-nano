@@ -180,9 +180,10 @@ echo -e "${IGre}create webpack configure to ${PRJ_NAME}${RESET}"
 
 echo "
 var path = require('path');
-//const webpack = require('webpack');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 //const CleanWebpackPlugin = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   entry: './react-app/src/index.js',
@@ -204,18 +205,23 @@ module.exports = {
                //plugins: ['react-hot-loader/babel'],
              },
           },
-          //{ loader: 'style-loader' },
-          //{ loader: 'css-loader' },
-          //{ loader: 'sass-loader' },
-          //{ loader: 'file-loader' },
          ]
         },
         {
           test: /\.css$/,
           exclude: /(node_modules)/,
           use: [
-            { loader: 'style-loader' },
-            { loader: 'css-loader' },
+            // { loader: 'style-loader' },
+            // { loader: 'css-loader' },
+            {
+              loader: MiniCssExtractPlugin.loader,
+              options: {
+                publicPath: (resourcePath, context) => {
+                  return path.relative(path.dirname(resourcePath), context) + '/';
+                },
+              },
+            },
+            'css-loader',
           ],
         },
         {
@@ -237,17 +243,22 @@ module.exports = {
     ]
   },
  plugins: [
-    //new CleanWebpackPlugin(),
-    //new webpack.HotModuleReplacementPlugin(),
+   // new CleanWebpackPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       template: './react-app/src/index.html',
+    }),
+    new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: '[name].css',
+      chunkFilename: '[id].css',
     }),
   ],
   devServer: {
     hot: true,
   },
 }
-
 " | tee webpack.config.js
 
 echo -e "${IGre}Create react components directory to ${PRJ_NAME}${RESET}"
