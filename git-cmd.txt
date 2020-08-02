@@ -1,6 +1,9 @@
-echo "# ros_webmysqlauth" >> README.md
+echo "# Header descriptions" >> README.md
 git init
 git add README.md
 git commit -m "first commit"
-git remote add origin https://github.com/apiyap/ros_webmysqlauth.git
+# Create New
+curl -u 'piya.pimchankam@gmail.com' https://api.github.com/user/repos -d '{"name":"repo"}'
+# Update
+git remote add origin https://github.com/apiyap/repo.git
 git push -u origin master
