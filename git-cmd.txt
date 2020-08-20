@@ -14,7 +14,8 @@ git init
 git config -e
 git remote show origin
 #Set git user
-git config --global user.name "piya.pimchankam@gmail.com"
+git config --global user.name "Mr. Piya Pimchankam"
+git config --global user.email "piya.pimchankam@gmail.com"
 #Show git User
 git config --global user.name
 #config vs code ext.
