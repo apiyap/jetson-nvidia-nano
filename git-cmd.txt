@@ -7,3 +7,13 @@ curl -u 'piya.pimchankam@gmail.com' https://api.github.com/user/repos -d '{"name
 # Update
 git remote add origin https://github.com/apiyap/repo.git
 git push -u origin master
+
+#####
+git init
+#show config
+git config -e
+git remote show origin
+#Set git user
+git config user.name "piya.pimchankam@gmail.com"
+#Show git User
+git config user.name
